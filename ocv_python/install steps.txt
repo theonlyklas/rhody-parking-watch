@@ -1,0 +1,20 @@
+http://docs.opencv.org/3.2.0/ Use this for tutorials
+
+1. Install Python 3.5 (3.6 might work as well, can't confirm, but anything before 3.3 won't work)
+
+2. Change windows environmental path to include Python35 and Python35/Scripts directories to be able to use pip (probably not needed on Mac and Linux, I can't verify):
+
+3. From an admin command line/terminal, run these commands anywhere (only needs to be done once):
+pip install opencv-python
+pip install matplotlib
+
+4. Run the test_ORB.py file
+
+(COMPLETELY OPTIONAL AND I HAVEN'T TRIED THIS YET) To test out SIFT and SURF algorithms: 
+git clone both the opencv AND opencv_contrib repositories
+follow cmake instructions
+compile the library
+
+^it's a patented image recognition algorithm so I'm avoiding it tbh
+
+
