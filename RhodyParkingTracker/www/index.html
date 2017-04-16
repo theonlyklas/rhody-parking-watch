@@ -34,28 +34,26 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <title>Hello World</title>
+    <title>Rhody Parking Tracker</title>
 </head>
 
 <body>
     <!-- BEGIN APP WRAPPER -->
     <div id="appWrapper">
         <div id="logo"></div>
-        <button onclick="changeHTML('TEST')">"TEST"</button>
+        <!-- <button onclick="changeHTML('TEST')">"TEST"</button> -->
+		<div id="title">
+			<p>I am a...</p>
+		</div>
         <div id="userSelect">
-            <p>I am a...</p>
-            <div id="selectVisitor">
-                <p>Visitor</p>
-            </div>
-            <div id="selectCommuter">
-                <p>Commuter</p>
-            </div>
-            <div id="selectFaculty">
-                <p>Faculty Member</p>
-            </div>
+			<button class="userButtons" onclick="changeHTML('TEST')">Visitor</button>
+			<p> </P>
+            <button class="userButtons" onclick="changeHTML('TEST')">Commuter</button>
+            <p> </P>
+			<button class="userButtons" onclick="changeHTML('TEST')">Faculty Member</button>
         </div>
         <div id="helpfulLinks">
-            <p>Helpful Links</p>
+            <button class="linkButton" onclick="changeHTML('TEST')">URI Parking Links</button>
         </div>
     </div>
     <!-- END APP WRAPPER -->
