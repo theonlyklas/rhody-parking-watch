@@ -131,7 +131,6 @@ html, body {
 }
 
 #logo {
-  position: absolute;
   background-image: url("../img/RPT_logo.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -148,17 +147,17 @@ html, body {
 }
 
 #title {
-  font-family: Impact, Charcoal, sans-serif;
+  font-weight:bold;
+  position: relative;
   font-size: 40px;
-  position: absolute;
-  top: 12%;
-  transform: translateX(122%);
+  text-align: center;
   text-transform: none;
+  bottom: 3%;
 }
 
 #userSelect {
-  position: absolute;
-  top: 30%;
+  position: relative;
+  bottom: 6%;
   background-color: white;
   font-size: 28px;
 }
@@ -169,11 +168,12 @@ html, body {
 	border: 2px solid black;
 	border-radius: 20px;
     color: black;
-    padding: 15px;
-    font-size: 28px;
+    padding: 17px;
+    font-size: 30px;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	width: 275px;
-	margin-left: 24%;
+	position: relative;
+	margin: auto;
 }
 
 .linkButton {
@@ -182,15 +182,16 @@ html, body {
 	border: 2px solid black;
 	border-radius: 20px;
     color: black;
-    padding: 15px 25px;
-    font-size: 28px;
+    padding: 17px;
+    font-size: 30px;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	margin-left: 16%;
+	position: relative;
+	margin: auto;
 }
 
 #helpfulLinks {
   position: absolute;
-  top: 80%;
+  top: 85%;
   height: 10%;
   width: 100%;
 }
