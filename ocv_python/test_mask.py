@@ -18,8 +18,8 @@ spot6_vertices = [(615, 180), (710, 190), (710, 310), (664, 310)]
 lotVertices = [spot1_vertices, spot2_vertices, spot3_vertices,
                spot4_vertices, spot5_vertices, spot6_vertices]
 
-parkingSpotMasks = [];
-maskedImages = [];
+parkingSpotMasks = []
+maskedImages = []
 
 for i in range(len(sourceImages)):
     # mask defaulting to black for 3-channel and transparent for 4-channel
@@ -34,10 +34,17 @@ for i in range(len(sourceImages)):
     # apply the mask
     maskedImages.append(cv2.bitwise_and(sourceImages[i], parkingSpotMask))
 
-    grayImage = cv2.cvtColor(maskedImages[i],cv2.COLOR_BGR2GRAY)
+    # convert to grayscale
+    grayImage = cv2.cvtColor(maskedImages[i], cv2.COLOR_BGR2GRAY)
 
-    grayImage = np.float32(gray)
-    cornerDetecteDImage = cv2.cornerHarris(gray,2,3,0.04)
+    # convert to floating point image
+    grayImage = np.float32(grayImage)
+
+    # find corners in image
+    cornerDetectedImage = cv2.cornerHarris(grayImage, 3, 3, 0.04)
+
+    # Threshold for an optimal value, it may vary depending on the image.
+    maskedImages[i][cornerDetectedImage > 0.001 * cornerDetectedImage.max()] = [0, 0, 255]
 
     # display the result
     cv2.imshow('c44_' + str(i), maskedImages[i])
