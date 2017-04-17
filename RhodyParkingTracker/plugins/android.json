@@ -7,14 +7,8 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.JasonKlas.RhodyParkingTracker"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.JasonKlas.RhodyParkingTracker"
-        },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.JasonKlas.RhodyParkingTracker"
+            "PACKAGE_NAME": "com.app.rpt"
         }
     },
     "dependent_plugins": {}

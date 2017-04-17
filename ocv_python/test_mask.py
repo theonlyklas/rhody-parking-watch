@@ -34,6 +34,11 @@ for i in range(len(sourceImages)):
     # apply the mask
     maskedImages.append(cv2.bitwise_and(sourceImages[i], parkingSpotMask))
 
+    grayImage = cv2.cvtColor(maskedImages[i],cv2.COLOR_BGR2GRAY)
+
+    grayImage = np.float32(gray)
+    cornerDetecteDImage = cv2.cornerHarris(gray,2,3,0.04)
+
     # display the result
     cv2.imshow('c44_' + str(i), maskedImages[i])
 

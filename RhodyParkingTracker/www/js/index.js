@@ -44,3 +44,21 @@ var app = {
 };
 
 app.initialize();
+
+function changeHTML(divID) {
+  if (divID === "TEST") {
+    var htmlReplacement = window.DEFAULT_CORDOVA_HTML;
+  }
+
+  document.getElementById("appWrapper").innerHTML = htmlReplacement;
+}
+
+window.DEFAULT_CORDOVA_HTML = `
+    <div class="app">
+        <h1>Apache Cordova</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    </div>
+`

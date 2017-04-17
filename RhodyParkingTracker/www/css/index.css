@@ -102,14 +102,96 @@ h1 {
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 @-webkit-keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+/* OUR CUSTOMIZATIONS */
+
+/* CSS variables declarations */
+:root {
+  --mainColor: deepskyblue;
+  --secondaryColor: grey;
+}
+
+html, body {
+  color: black;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  min-width: 100%;
+}
+
+#logo {
+  background-image: url("../img/RPT_logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateX(50%);
+  width: 50%;
+  height: 15%;
+}
+
+#appWrapper {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+#title {
+  font-weight:bold;
+  position: relative;
+  font-size: 40px;
+  text-align: center;
+  text-transform: none;
+  bottom: 3%;
+}
+
+#userSelect {
+  position: relative;
+  bottom: 6%;
+  background-color: white;
+  font-size: 28px;
+}
+
+.userButtons {
+	display: block;
+	background-color: deepskyblue;
+	border: 2px solid black;
+	border-radius: 20px;
+    color: black;
+    padding: 17px;
+    font-size: 30px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	width: 275px;
+	position: relative;
+	margin: auto;
+}
+
+.linkButton {
+	display: block;
+	background-color: lightgrey;
+	border: 2px solid black;
+	border-radius: 20px;
+    color: black;
+    padding: 17px;
+    font-size: 30px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	position: relative;
+	margin: auto;
+}
+
+#helpfulLinks {
+  position: absolute;
+  top: 85%;
+  height: 10%;
+  width: 100%;
 }
