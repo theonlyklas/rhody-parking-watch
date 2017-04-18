@@ -19,7 +19,8 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), 
+false);
     },
 
     // deviceready Event Handler
@@ -46,12 +47,22 @@ var app = {
 app.initialize();
 
 function changeHTML(divID) {
-  if (divID === "TEST") {
-    var htmlReplacement = window.DEFAULT_CORDOVA_HTML;
-  }
+	if (divID === "TEST") {
+	var htmlReplacement = window.DEFAULT_CORDOVA_HTML; }
+	else if (divID === "helpfulLinks") {
+    var htmlReplacement = window.HELPFUL_LINK;}
+	else if (divID === "afterUserType") {
+    var htmlReplacement = window.AFTER_USER_TYPE;}
+	else if (divID === "viewMyLots") {
+    var htmlReplacement = window.VIEW_MY_LOTS;}
+	else if (divID === "findClosest") {
+    var htmlReplacement = window.FIND_CLOSEST;}
+	else if (divID === "afterFindingLot") {
+    var htmlReplacement = window.AFTER_FINDING_LOT;}
+	
+	document.getElementById("appWrapper").innerHTML = htmlReplacement;
 
-  document.getElementById("appWrapper").innerHTML = htmlReplacement;
-}
+  }
 
 window.DEFAULT_CORDOVA_HTML = `
     <div class="app">
@@ -61,4 +72,38 @@ window.DEFAULT_CORDOVA_HTML = `
             <p class="event received">Device is Ready</p>
         </div>
     </div>
+`
+  
+window.HELPFUL_LINK = `
+  <div id="logo"></div>
+  <div id="title">
+	<p>Helpful Links</p>
+  <div id="links">
+	<a href="http://web.uri.edu/parking/"><button class="links">Parking Services</button></a>
+    <p> </p>
+	<a href="http://bus.apps.uri.edu"><button class="links">URI Bus Tracker</button></a>
+    <p> </p>
+	<a href="https://www.buymypermit.com/uri/"><button class="links">Purchase URI Permit</button></a>
+    <p> </p>
+	<a href="https://www.uri.edu"><button class="links">URI Homepage</button></a>
+    <p> </p>
+	<a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Github</button></a>
+    <p> </p>
+  </div>
+`
+
+window.AFTER_USER_TYPE = `
+  <div id="logo"></div>
+`
+
+window.VIEW_MY_LOTS = `
+  <div id="logo"></div>
+`
+
+window.FIND_CLOSEST = `
+  <div id="logo"></div>
+`
+
+window.AFTER_FINDING_LOT = `
+  <div id="logo"></div>
 `
