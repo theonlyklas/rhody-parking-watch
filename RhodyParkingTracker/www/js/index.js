@@ -47,10 +47,11 @@ false);
 app.initialize();
 
 function changeHTML(divID) {
+
 	if (divID === "TEST") {
-	var htmlReplacement = window.DEFAULT_CORDOVA_HTML; }
+	  var htmlReplacement = window.DEFAULT_CORDOVA_HTML; }
 	else if (divID === "helpfulLinks") {
-    var htmlReplacement = window.HELPFUL_LINK;}
+    var htmlReplacement = window.HELPFUL_LINKS;}
 	else if (divID === "afterUserType") {
     var htmlReplacement = window.AFTER_USER_TYPE;}
 	else if (divID === "viewMyLots") {
@@ -64,6 +65,11 @@ function changeHTML(divID) {
 
   }
 
+window.onunload() {
+    delete window.DEFAULT_CORDOVA_HTML;
+    delete window.USER_SELECTION_MENU;
+}
+
 window.DEFAULT_CORDOVA_HTML = `
     <div class="app">
         <h1>Apache Cordova</h1>
@@ -73,8 +79,8 @@ window.DEFAULT_CORDOVA_HTML = `
         </div>
     </div>
 `
-  
-window.HELPFUL_LINK = `
+
+window.HELPFUL_LINKS = `
   <div id="logo"></div>
   <div id="title">
 	<p>Helpful Links</p>
@@ -106,4 +112,19 @@ window.FIND_CLOSEST = `
 
 window.AFTER_FINDING_LOT = `
   <div id="logo"></div>
+`
+
+window.USER_SELECTION_MENU = `
+    <div id="logo"></div>
+    <div id="title">
+        <p>I am a...</p>
+    </div>
+    <div id="userSelect">
+        <button class="userButtons" onclick="changeHTML('TEST')">Visitor</button>
+        <button class="userButtons" onclick="changeHTML('TEST')">Commuter</button>
+        <button class="userButtons" onclick="changeHTML('TEST')">Faculty Member</button>
+    </div>
+    <div id="helpfulLinks">
+        <button class="linkButton" onclick="changeHTML('TEST')">URI Parking Links</button>
+    </div>
 `
