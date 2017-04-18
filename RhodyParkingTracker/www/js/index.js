@@ -46,11 +46,16 @@ var app = {
 app.initialize();
 
 function changeHTML(divID) {
-  if (divID === "TEST") {
-    var htmlReplacement = window.DEFAULT_CORDOVA_HTML;
-  }
+    if (divID === "TEST") {
+        var htmlReplacement = window.DEFAULT_CORDOVA_HTML;
+    }
 
-  document.getElementById("appWrapper").innerHTML = htmlReplacement;
+    document.getElementById("appWrapper").innerHTML = htmlReplacement;
+}
+
+window.onunload() {
+    delete window.DEFAULT_CORDOVA_HTML;
+    delete window.USER_SELECTION_MENU;
 }
 
 window.DEFAULT_CORDOVA_HTML = `
@@ -60,5 +65,20 @@ window.DEFAULT_CORDOVA_HTML = `
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
         </div>
+    </div>
+`
+
+window.USER_SELECTION_MENU = `
+    <div id="logo"></div>
+    <div id="title">
+        <p>I am a...</p>
+    </div>
+    <div id="userSelect">
+        <button class="userButtons" onclick="changeHTML('TEST')">Visitor</button>
+        <button class="userButtons" onclick="changeHTML('TEST')">Commuter</button>
+        <button class="userButtons" onclick="changeHTML('TEST')">Faculty Member</button>
+    </div>
+    <div id="helpfulLinks">
+        <button class="linkButton" onclick="changeHTML('TEST')">URI Parking Links</button>
     </div>
 `
