@@ -72,14 +72,14 @@ function testPHP(button) {
     var params = "test=true&name=jason";
   }
 
-  xhttp.open("POST", url, true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState === 4 && xhttp.status === 200) {
       document.getElementById("appWrapper").innerHTML = xhttp.responseText;
     }
   };
+
+  xhttp.open("POST", url, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   xhttp.send(params);
 }
@@ -119,7 +119,7 @@ window.HELPFUL_LINKS = `
     <br>
 	<a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Github</button></a>
     <br>
-  <button class="links" onclick="testPHP("testPHP")">Test PHP</button>
+  <button class="links" onclick="testPHP('testPHP')">Test PHP</button>
     <br>
   </div>
 `;
