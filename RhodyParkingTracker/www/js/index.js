@@ -59,9 +59,9 @@ function changeHTML(button) {
   } else if (button === "afterFindingLot") {
     var htmlReplacement = window.AFTER_FINDING_LOT;
   }
-
   document.getElementById("appWrapper").innerHTML = htmlReplacement;
 }
+
 
 function testPHP(button) {
   /* create xhttprequest object and initialize  variables */
@@ -72,16 +72,19 @@ function testPHP(button) {
     var params = "test=true&name=jason";
   }
 
+  xhttp.open("POST", url, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState === 4 && xhttp.status === 200) {
       document.getElementById("appWrapper").innerHTML = xhttp.responseText;
     }
   };
 
-  xhttp.open("POST", url, true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
   xhttp.send(params);
+}
+function goBack() {
+    window.history.back();
 }
 
 window.onunload = function() {
@@ -119,21 +122,57 @@ window.HELPFUL_LINKS = `
     <br>
 	<a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Github</button></a>
     <br>
-  <button class="links" onclick="testPHP('testPHP')">Test PHP</button>
+  <button class="links" onclick="testPHP("testPHP")">Test PHP</button>
     <br>
   </div>
 `;
 
 window.AFTER_USER_TYPE = `
   <div id="logo"></div>
+  <button class="userButtons" onclick="changeHTML('viewMyLots')">View My Lots</button>
+  <button class="userButtons" onclick="changeHTML('findClosest')">Find Closest Lot</button>
+  <div id="goBack">
+  <button class="userButtons" onclick="goBack()">Go Back</button>
+  </div>
 `;
-
+//view to get list of lots
+//according to specified user
 window.VIEW_MY_LOTS = `
   <div id="logo"></div>
+  <div id="title">
+  <p>My Available Lots</p>
+
+<img src="/js/Parking-Lot.jpg">
+<div id = "lot_info">
+<p> Lot Title     # Spots:  </p>
+
 `;
 
+//Will show a list of destinations to choose from
+//Once clicked, they will be linked to google maps
+//Still working on passing a location into maps from the click
 window.FIND_CLOSEST = `
   <div id="logo"></div>
+  <div class="table"></div>
+
+<table style="width:75%">
+  <tr>
+    <th>Destinations</th>
+
+<tr>
+    <td><a href="https://www.google.com/maps">Ballentine Hall</a></td>
+
+      </tr>
+  <tr>
+  <td><a href="https://www.google.com/maps">CBLS Hall</a></td>
+  </tr>
+  <td><a href="https://www.google.com/maps">Library</a></td>
+  <tr>
+  <td> <a href="https://www.google.com/maps">Memorial Union</a></td>
+  </tr>
+  <td> <a href="https://www.google.com/maps">Tyler Hall</a></td>
+</table>
+
 `;
 
 window.AFTER_FINDING_LOT = `
@@ -150,6 +189,7 @@ window.USER_SELECTION_MENU = `
     <button class="userButtons" onclick="changeHTML('afterUserType')">Commuter</button>
     <button class="userButtons" onclick="changeHTML('afterUserType')">Resident</button>
     <button class="userButtons" onclick="changeHTML('afterUserType')">Faculty Member</button>
+    button class="userButtons" onclick="changeHTML('afterUserType')">Faculty Member</button>
   </div>
 
   <div id="helpfulLinks">
