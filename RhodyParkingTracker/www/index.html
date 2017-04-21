@@ -45,12 +45,16 @@
             <p>I am a...</p>
         </div>
         <div id="userSelect">
-          <button class="userButtons" onclick="changeHTML('afterUserType')">Visitor</button>
-          <button class="userButtons" onclick="changeHTML('afterUserType')">Commuter</button>
-          <button class="userButtons" onclick="changeHTML('afterUserType')">Resident</button>
-          <button class="userButtons" onclick="changeHTML('afterUserType')">Faculty Member</button>
+          <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
+          <br>
+          <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
+          <br>
+          <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
+          <br>
+          <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
+          <br>
         </div>
-      
+
         <div id="helpfulLinks">
             <button class="linkButton" onclick="changeHTML('helpfulLinks')">URI Parking Links</button>
         </div>
