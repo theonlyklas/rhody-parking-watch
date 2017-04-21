@@ -177,7 +177,7 @@ html, body {
 #title {
     font-weight: bold;
     position: relative;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
     text-transform: none;
     bottom: 3%;
@@ -189,6 +189,7 @@ html, body {
     background-color: white;
     font-size: 28px;
 }
+
 
 .userButtons {
     display: block;
@@ -230,11 +231,43 @@ html, body {
 	margin: auto;
 }
 
+.goBack{
+  background-color: lightgrey;
+  position: absolute;
+  top: 85%;
+  height: 10%;
+  width: 100%;
+}
+
+
+  table, th, td{
+        margin: auto;
+        border: 3px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+        font-size: 18px;
+        color: darkblue;
+        background-color: aliceblue;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
 #helpfulLinks {
     position: absolute;
     top: 85%;
     height: 10%;
     width: 100%;
+}
+img{
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  padding: 5px;
+  width: 300px;
+}
+#lot_info{
+  font-size: 20px;
 }
 
 
