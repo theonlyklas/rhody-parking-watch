@@ -1,0 +1,10 @@
+{
+  "ios": {
+    "debug": {
+      "developmentTeam": "RhodyParkingWatch"
+    },
+    "release": {
+      "developmentTeam": "RhodyParkingWatch"
+    }
+  }
+}
