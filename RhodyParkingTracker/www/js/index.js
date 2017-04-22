@@ -1,3 +1,5 @@
+//Trying to add .gitignore stuff
+
 /* GLOBAL VARIABLES HERE */
 window.CURRENT_VIEW = "userSelectionMenu";
 window.PREVIOUS_VIEW = "";
