@@ -140,6 +140,7 @@ window.VIEW_MY_LOTS_HTML = `
   <div id="logo"></div>
   <div id="title">
   <p>My Available Lots</p>
+  </div>
 
 <img src="/js/Parking-Lot.jpg">
 <div id = "lot_info">
@@ -176,6 +177,14 @@ window.FIND_CLOSEST_HTML = `
 
 window.AFTER_FINDING_LOT_HTML = `
   <div id="logo"></div>
+  <div id="title">
+  <p>Closest Parking Lot</p>
+  <br>
+  <button class="userButtons" onclick="location.href='http://google.com';">Open in Google Maps</button>
+  <br>
+  <div id="goBack">
+	<button class="goBack" onclick="goBack()">Go Back</button>
+  </div>
 `;
 
 /* CORDOVA STUFF */
