@@ -232,11 +232,16 @@ html, body {
 }
 
 .goBack{
+  display: block;
   background-color: lightgrey;
-  position: absolute;
-  top: 85%;
-  height: 10%;
-  width: 100%;
+  border: 2px solid black;
+  border-radius: 20px;
+  color: black;
+  padding: 17px;
+  font-size: 30px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: relative;
+  margin: auto;
 }
 
 
