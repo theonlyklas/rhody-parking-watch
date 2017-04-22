@@ -2,6 +2,7 @@
 window.CURRENT_VIEW = "userSelectionMenu";
 window.PREVIOUS_VIEW = "";
 window.USER_CLASS;
+var theDestination;
 
 window.onunload = function() {
   /* GLOBAL VARIABLES */
@@ -84,6 +85,9 @@ function goBack() {
 
   changeHTML(window.PREVIOUS_VIEW);
 }
+function saveDestination(destination){
+  theDestination = destination;
+}
 
 window.USER_SELECTION_MENU_HTML = `
   <div id="logo"></div>
@@ -131,7 +135,7 @@ window.AFTER_USER_TYPE_HTML = `
   <button class="userButtons" onclick="changeHTML('viewMyLots')">View My Lots</button>
   <button class="userButtons" onclick="changeHTML('findClosest')">Find Closest Lot</button>
   <div id="goBack">
-  <button class="userButtons" onclick="goBack()">Go Back</button>
+  <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
 `;
 //view to get list of lots
@@ -160,23 +164,34 @@ window.FIND_CLOSEST_HTML = `
     <th>Destinations</th>
 
 <tr>
-    <td><a href="https://www.google.com/maps">Ballentine Hall</a></td>
+    <td> <button onclick="saveDestination('balentine')">Balentine Hall</button></td>
 
-      </tr>
-  <tr>
-  <td><a href="https://www.google.com/maps">CBLS Hall</a></td>
-  </tr>
-  <td><a href="https://www.google.com/maps">Library</a></td>
-  <tr>
-  <td> <a href="https://www.google.com/maps">Memorial Union</a></td>
-  </tr>
-  <td> <a href="https://www.google.com/maps">Tyler Hall</a></td>
+</tr>
+<tr>
+    <td> <button onclick="saveDestination('CBLSHall')">CBLS Hall</button></td>
+
+</tr>
+<tr>
+    <td> <button onclick="saveDestination('Library')">Library</button></td>
+
+</tr>
+<tr>
+    <td> <button onclick="saveDestination('MemorialUnion')">Memorial Union</button></td>
+
+</tr>
+<tr>
+    <td> <button onclick="saveDestination('TylerHall')">Tyler Hall</button></td>
+
+</tr>
 </table>
+<button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
 
 `;
 
+
 window.AFTER_FINDING_LOT_HTML = `
   <div id="logo"></div>
+
   <div id="title">
   <p>Closest Parking Lot</p>
   <br>
@@ -185,6 +200,7 @@ window.AFTER_FINDING_LOT_HTML = `
   <div id="goBack">
 	<button class="goBack" onclick="goBack()">Go Back</button>
   </div>
+
 `;
 
 /* CORDOVA STUFF */
