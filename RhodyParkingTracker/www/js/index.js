@@ -131,12 +131,17 @@ window.HELPFUL_LINKS_HTML = `
         <br>
     </div>
   </div>
+
+  <div id="goBack">
+  <button class="goBack" onclick="goBack()">Go Back</button>
+  </div>
 `;
 
 window.AFTER_USER_TYPE_HTML = `
   <div id="logo"></div>
   <button class="userButtons" onclick="changeHTML('viewMyLots')">View My Lots</button>
   <button class="userButtons" onclick="changeHTML('findClosest')">Find Closest Lot</button>
+
   <div id="goBack">
     <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
@@ -153,6 +158,10 @@ window.VIEW_MY_LOTS_HTML = `
 <img src="/js/Parking-Lot.jpg">
 <div id = "lot_info">
 <p> Lot Title     # Spots:  </p>
+
+<div id="goBack">
+<button class="goBack" onclick="goBack()">Go Back</button>
+</div>
 
 `;
 
@@ -185,6 +194,10 @@ window.FIND_CLOSEST_HTML = `
 
   <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
 
+  //back button
+  <div id="goBack">
+  <button class="goBack" onclick="goBack()">Go Back</button>
+  </div>
 `;
 
 
@@ -201,6 +214,9 @@ window.AFTER_FINDING_LOT_HTML = `
     </div>
   </div>
 
+  <div id="goBack">
+  <button class="goBack" onclick="goBack()">Go Back</button>
+  </div>
 `;
 
 /* CORDOVA STUFF, DON'T TOUCH */
