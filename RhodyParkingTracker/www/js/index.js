@@ -1,15 +1,16 @@
-//Trying to fix .gitignore stuff
-
 /* GLOBAL VARIABLES HERE */
 window.CURRENT_VIEW = "userSelectionMenu";
 window.PREVIOUS_VIEW = "";
 window.USER_CLASS;
+window.DESTINATION;
 
+/* prevent memory leaks by deleting globals when tab closes */
 window.onunload = function() {
   /* GLOBAL VARIABLES */
   delete window.CURRENT_VIEW;
   delete window.PREVIOUS_VIEW;
   delete window.USER_CLASS;
+  delete window.DESTINATION;
 
   /* WINDOW HTMLS */
   delete window.DEFAULT_CORDOVA_HTML;
@@ -21,44 +22,41 @@ window.onunload = function() {
   delete window.AFTER_FINDING_LOT_HTML;
 }
 
-
-function changeHTML(button, user) {
+/* displays the next requested view from the user */
+function changeHTML(desiredView) {
   window.PREVIOUS_VIEW = window.CURRENT_VIEW;
 
   /* rewrites the html inside the appWrapper according to the argument passed in */
-  if (button === "TEST") {
+  if (desiredView === "TEST") {
     var htmlReplacement = window.DEFAULT_CORDOVA_HTML;
-  } else if (button == "helpfulLinks") {
+  } else if (desiredView === "helpfulLinks") {
     var htmlReplacement = window.HELPFUL_LINKS_HTML;
-  } else if (button == "afterUserType") {
+  } else if (desiredView === "afterUserType") {
     var htmlReplacement = window.AFTER_USER_TYPE_HTML;
-  } else if (button == "viewMyLots") {
+  } else if (desiredView === "viewMyLots") {
     var htmlReplacement = window.VIEW_MY_LOTS_HTML;
-  } else if (button == "findClosest") {
+  } else if (desiredView === "findClosest") {
     var htmlReplacement = window.FIND_CLOSEST_HTML;
-  } else if (button == "afterFindingLot") {
+  } else if (desiredView === "afterFindingLot") {
     var htmlReplacement = window.AFTER_FINDING_LOT_HTML;
-  } else if (button == "userSelectionMenu") {
+  } else if (desiredView === "userSelectionMenu") {
     var htmlReplacement = window.USER_SELECTION_MENU_HTML;
   }
 
-  window.CURRENT_VIEW = button;
+  window.CURRENT_VIEW = desiredView;
   document.getElementById("appWrapper").innerHTML = htmlReplacement;
 }
 
-
-function defineUser(button, user) {
-  window.PREVIOUS_VIEW = window.CURRENT_VIEW;
-  window.CURRENT_VIEW = button;
-
+/* saves user class and displays next view */
+function defineUser(desiredView, user) {
   window.USER_CLASS = user;
-  var htmlReplacement = window.AFTER_USER_TYPE_HTML;
-  document.getElementById("appWrapper").innerHTML = htmlReplacement;
+
+  changeHTML(desiredView);
 }
 
-
+/* tests server communication */
 function testPHP(button) {
-  /* create xhttprequest object and initialize  variables */
+  /* create xhttprequest object and initialize variables */
   var xhttp = new XMLHttpRequest();
   var url = "https:/jasonklas.me/rhodyparkingtracker/test.php";
 
@@ -78,7 +76,7 @@ function testPHP(button) {
   xhttp.send(params);
 }
 
-
+/* returns user to the screen they were previously viewing */
 function goBack() {
   if (window.PREVIOUS_VIEW == "userSelectionMenu") {
     window.USER_CLASS = "";
@@ -87,6 +85,12 @@ function goBack() {
   changeHTML(window.PREVIOUS_VIEW);
 }
 
+/* saves the user's desired destination */
+function saveDestination(desiredDestination){
+  window.DESTINATION = desiredDestination;
+}
+
+/* strings that are used to rewrite the appWrapper element */
 window.USER_SELECTION_MENU_HTML = `
   <div id="logo"></div>
   <div id="title">
@@ -111,42 +115,45 @@ window.USER_SELECTION_MENU_HTML = `
 window.HELPFUL_LINKS_HTML = `
   <div id="logo"></div>
   <div id="title">
-	<p>Helpful Links</p>
-  <div id="links">
-	<a href="http://web.uri.edu/parking/"><button class="links">Parking Services</button></a>
-    <br>
-	<a href="http://bus.apps.uri.edu"><button class="links">URI Bus Tracker</button></a>
-    <br>
-	<a href="https://www.buymypermit.com/uri/"><button class="links">Purchase URI Permit</button></a>
-    <br>
-	<a href="https://www.uri.edu"><button class="links">URI Homepage</button></a>
-    <br>
-	<a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Github</button></a>
-    <br>
-  <button class="links" onclick="testPHP("testPHP")">Test PHP</button>
-    <br>
+  	<p>Helpful Links</p>
+    <div id="links">
+    	<a href="http://web.uri.edu/parking/"><button class="links">Parking Services</button></a>
+        <br>
+    	<a href="http://bus.apps.uri.edu"><button class="links">URI Bus Tracker</button></a>
+        <br>
+    	<a href="https://www.buymypermit.com/uri/"><button class="links">Purchase URI Permit</button></a>
+        <br>
+    	<a href="https://www.uri.edu"><button class="links">URI Homepage</button></a>
+        <br>
+    	<a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Github</button></a>
+        <br>
+      <button class="links" onclick="testPHP('testPHP')">Test PHP</button>
+        <br>
+    </div>
   </div>
 
   <div id="goBack">
   <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
-
 `;
 
 window.AFTER_USER_TYPE_HTML = `
   <div id="logo"></div>
   <button class="userButtons" onclick="changeHTML('viewMyLots')">View My Lots</button>
   <button class="userButtons" onclick="changeHTML('findClosest')">Find Closest Lot</button>
+
   <div id="goBack">
-  <button class="goBack" onclick="goBack()">Go Back</button>
+    <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
 `;
+
 //view to get list of lots
 //according to specified user
 window.VIEW_MY_LOTS_HTML = `
   <div id="logo"></div>
   <div id="title">
-  <p>My Available Lots</p>
+    <p>My Available Lots</p>
+  </div>
 
 <img src="/js/Parking-Lot.jpg">
 <div id = "lot_info">
@@ -163,41 +170,56 @@ window.VIEW_MY_LOTS_HTML = `
 //Still working on passing a location into maps from the click
 window.FIND_CLOSEST_HTML = `
   <div id="logo"></div>
-  <div class="table"></div>
 
-<table style="width:75%">
-  <tr>
-    <th>Destinations</th>
-
-<tr>
-    <td><a href="https://www.google.com/maps">Ballentine Hall</a></td>
-
+  <table style="width:75%">
+      <tr>
+        <th>Destinations</th>
       </tr>
-  <tr>
-  <td><a href="https://www.google.com/maps">CBLS Hall</a></td>
-  </tr>
-  <td><a href="https://www.google.com/maps">Library</a></td>
-  <tr>
-  <td> <a href="https://www.google.com/maps">Memorial Union</a></td>
-  </tr>
-  <td> <a href="https://www.google.com/maps">Tyler Hall</a></td>
-</table>
+      <tr>
+        <td> <button onclick="saveDestination('balentine')">Balentine Hall</button></td>
+      </tr>
+      <tr>
+        <td> <button onclick="saveDestination('CBLSHall')">CBLS Hall</button></td>
+      </tr>
+      <tr>
+        <td> <button onclick="saveDestination('Library')">Library</button></td>
+      </tr>
+      <tr>
+        <td> <button onclick="saveDestination('MemorialUnion')">Memorial Union</button></td>
+      </tr>
+      <tr>
+        <td> <button onclick="saveDestination('TylerHall')">Tyler Hall</button></td>
+      </tr>
+  </table>
 
-<div id="goBack">
-<button class="goBack" onclick="goBack()">Go Back</button>
-</div>
+  <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
 
+  //back button
+  <div id="goBack">
+  <button class="goBack" onclick="goBack()">Go Back</button>
+  </div>
 `;
+
 
 window.AFTER_FINDING_LOT_HTML = `
   <div id="logo"></div>
+
+  <div id="title">
+    <p>Closest Parking Lot</p>
+    <br>
+    <button class="userButtons" onclick="location.href='http://google.com';">Open in Google Maps</button>
+    <br>
+    <div id="goBack">
+    	<button class="goBack" onclick="goBack()">Go Back</button>
+    </div>
+  </div>
 
   <div id="goBack">
   <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
 `;
 
-/* CORDOVA STUFF */
+/* CORDOVA STUFF, DON'T TOUCH */
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
