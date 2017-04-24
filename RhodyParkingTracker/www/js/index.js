@@ -135,12 +135,17 @@ window.HELPFUL_LINKS_HTML = `
         <br>
     </div>
   </div>
+
+  <div id="goBack">
+  <button class="goBack" onclick="goBack()">Go Back</button>
+  </div>
 `;
 
 window.AFTER_USER_TYPE_HTML = `
   <div id="logo"></div>
   <button class="userButtons" onclick="changeHTML('viewMyLots')">View My Lots</button>
   <button class="userButtons" onclick="changeHTML('findClosest')">Find Closest Lot</button>
+
   <div id="goBack">
     <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
@@ -162,6 +167,10 @@ window.VIEW_MY_LOTS_HTML = `
 	<button class="goBack" onclick="goBack()">Go Back</button>
 </div>
   
+
+<div id="goBack">
+<button class="goBack" onclick="goBack()">Go Back</button>
+</div>
 
 `;
 
@@ -193,11 +202,12 @@ window.FIND_CLOSEST_HTML = `
   </table>
   <br>
   <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
-  <br>
+
+  //back button
   <div id="goBack">
-  	<button class="goBack" onclick="goBack()">Go Back</button>
+  <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
-  
+
 `;
 
 
@@ -214,6 +224,9 @@ window.AFTER_FINDING_LOT_HTML = `
     </div>
   </div>
 
+  <div id="goBack">
+  <button class="goBack" onclick="goBack()">Go Back</button>
+  </div>
 `;
 
 /* CORDOVA STUFF, DON'T TOUCH */
