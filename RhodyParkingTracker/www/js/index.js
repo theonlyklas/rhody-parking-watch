@@ -1,6 +1,7 @@
 /* GLOBAL VARIABLES HERE */
-window.CURRENT_VIEW = "userSelectionMenu";
-window.PREVIOUS_VIEW = "";
+window.VIEWS = ["userSelectionMenu"]; 
+window.CURRENT_VIEW = '';
+window.PREVIOUS_VIEW = '';
 window.USER_CLASS;
 window.DESTINATION;
 
@@ -11,6 +12,7 @@ window.onunload = function() {
   delete window.PREVIOUS_VIEW;
   delete window.USER_CLASS;
   delete window.DESTINATION;
+  delete window.VIEWS;
 
   /* WINDOW HTMLS */
   delete window.DEFAULT_CORDOVA_HTML;
@@ -23,9 +25,7 @@ window.onunload = function() {
 }
 
 /* displays the next requested view from the user */
-function changeHTML(desiredView) {
-  window.PREVIOUS_VIEW = window.CURRENT_VIEW;
-
+function changeHTML(desiredView) {  
   /* rewrites the html inside the appWrapper according to the argument passed in */
   if (desiredView === "TEST") {
     var htmlReplacement = window.DEFAULT_CORDOVA_HTML;
@@ -42,8 +42,8 @@ function changeHTML(desiredView) {
   } else if (desiredView === "userSelectionMenu") {
     var htmlReplacement = window.USER_SELECTION_MENU_HTML;
   }
+  window.VIEWS.push(desiredView);
 
-  window.CURRENT_VIEW = desiredView;
   document.getElementById("appWrapper").innerHTML = htmlReplacement;
 }
 
@@ -78,11 +78,15 @@ function testPHP(button) {
 
 /* returns user to the screen they were previously viewing */
 function goBack() {
-  if (window.PREVIOUS_VIEW == "userSelectionMenu") {
-    window.USER_CLASS = "";
+  if (window.VIEWS.length >= 1) {
+	  window.VIEWS.pop();
+	  var temp = window.VIEWS[(window.VIEWS.length - 1)];
+	  if (temp == "userSelectionMenu") {
+		window.USER_CLASS = "";
+	  }
+	  changeHTML(temp);
+	  window.VIEWS.pop();
   }
-
-  changeHTML(window.PREVIOUS_VIEW);
 }
 
 /* saves the user's desired destination */
@@ -153,6 +157,11 @@ window.VIEW_MY_LOTS_HTML = `
 <img src="/js/Parking-Lot.jpg">
 <div id = "lot_info">
 <p> Lot Title     # Spots:  </p>
+<br>
+<div id="goBack">
+	<button class="goBack" onclick="goBack()">Go Back</button>
+</div>
+  
 
 `;
 
@@ -182,9 +191,13 @@ window.FIND_CLOSEST_HTML = `
         <td> <button onclick="saveDestination('TylerHall')">Tyler Hall</button></td>
       </tr>
   </table>
-
+  <br>
   <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
-
+  <br>
+  <div id="goBack">
+  	<button class="goBack" onclick="goBack()">Go Back</button>
+  </div>
+  
 `;
 
 
