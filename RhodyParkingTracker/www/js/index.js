@@ -1,7 +1,5 @@
 /* GLOBAL VARIABLES HERE */
 window.VIEWS = ["userSelectionMenu"];
-window.CURRENT_VIEW = "userSelectionMenu";
-window.PREVIOUS_VIEW = "";
 window.USER_CLASS;
 window.DESTINATION;
 window.GPS_COORDINATES = findParkingLot();
@@ -9,13 +7,11 @@ window.GPS_COORDINATES = findParkingLot();
 /* prevent memory leaks by deleting globals when tab closes */
 window.onunload = function() {
   /* GLOBAL VARIABLES */
-  delete window.CURRENT_VIEW;
-  delete window.PREVIOUS_VIEW;
+  delete window.VIEWS;
   delete window.USER_CLASS;
   delete window.DESTINATION;
   delete window.VIEWS;
   delete window.GPS_COORDINATES;
-
 
   /* WINDOW HTMLS */
   delete window.DEFAULT_CORDOVA_HTML;
@@ -29,7 +25,8 @@ window.onunload = function() {
 
 /* displays the next requested view from the user */
 function changeHTML(desiredView) {
-  window.PREVIOUS_VIEW = window.CURRENT_VIEW;
+  /* update bacon button array */
+  window.VIEWS.push(desiredView);
   /* rewrites the html inside the appWrapper according to the argument passed in */
   if (desiredView === "TEST") {
     var htmlReplacement = window.DEFAULT_CORDOVA_HTML;
@@ -46,8 +43,7 @@ function changeHTML(desiredView) {
   } else if (desiredView === "userSelectionMenu") {
     var htmlReplacement = window.USER_SELECTION_MENU_HTML;
   }
-  window.VIEWS.push(desiredView);
-  window.CURRENT_VIEW = desiredView;
+
   document.getElementById("appWrapper").innerHTML = htmlReplacement;
   // If GPS coordinates are in the next view's html, rewrite them with the saved GPS coordinates
   if (desiredView === "afterFindingLot") {
@@ -86,21 +82,10 @@ function testPHP(button) {
 
 /* returns user to the screen they were previously viewing */
 function goBack() {
-  if (window.VIEWS.length >= 1) {
-	  window.VIEWS.pop();
-	  var temp = window.VIEWS[(window.VIEWS.length - 1)];
-	  if (temp == "userSelectionMenu") {
-		window.USER_CLASS = "";
-	  }
-	  changeHTML(temp);
-	  window.VIEWS.pop();
-    if (window.PREVIOUS_VIEW == "userSelectionMenu") {
-      window.USER_CLASS = "";
-    }
-
-    changeHTML(window.PREVIOUS_VIEW);
-
-  }
+  var temp = window.VIEWS[(window.VIEWS.length - 2)];
+  window.VIEWS.pop(); 
+  changeHTML(temp);
+  window.VIEWS.pop();
 }
 
 /* saves the user's desired destination */
@@ -200,11 +185,6 @@ window.VIEW_MY_LOTS_HTML = `
 	<button class="goBack" onclick="goBack()">Go Back</button>
 </div>
 
-
-<div id="goBack">
-<button class="goBack" onclick="goBack()">Go Back</button>
-</div>
-
 `;
 
 //Will show a list of destinations to choose from
@@ -268,6 +248,7 @@ window.FIND_CLOSEST_HTML = `
   <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
    -->
 
+  <br>
   <div id="goBack">
   <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
