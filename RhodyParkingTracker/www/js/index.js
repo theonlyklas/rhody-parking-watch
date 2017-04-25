@@ -1,6 +1,5 @@
 /* GLOBAL VARIABLES HERE */
-window.CURRENT_VIEW = "userSelectionMenu";
-window.PREVIOUS_VIEW = "";
+window.VIEWS = ['userSelectionMenu'];
 window.USER_CLASS;
 window.DESTINATION;
 
@@ -24,8 +23,8 @@ window.onunload = function() {
 
 /* displays the next requested view from the user */
 function changeHTML(desiredView) {
-  window.PREVIOUS_VIEW = window.CURRENT_VIEW;
-
+  /* back button update counter array */
+  window.VIEWS.push(desiredView);
   /* rewrites the html inside the appWrapper according to the argument passed in */
   if (desiredView === "TEST") {
     var htmlReplacement = window.DEFAULT_CORDOVA_HTML;
@@ -43,7 +42,6 @@ function changeHTML(desiredView) {
     var htmlReplacement = window.USER_SELECTION_MENU_HTML;
   }
 
-  window.CURRENT_VIEW = desiredView;
   document.getElementById("appWrapper").innerHTML = htmlReplacement;
 }
 
@@ -78,11 +76,11 @@ function testPHP(button) {
 
 /* returns user to the screen they were previously viewing */
 function goBack() {
-  if (window.PREVIOUS_VIEW == "userSelectionMenu") {
-    window.USER_CLASS = "";
-  }
-
-  changeHTML(window.PREVIOUS_VIEW);
+  /* save previous window */
+  var temp = window.VIEWS[(window.VIEWS.length - 2)];
+  window.VIEWS.pop(); 
+  changeHTML(temp);
+  window.VIEWS.pop();
 }
 
 /* saves the user's desired destination */
@@ -139,9 +137,11 @@ window.HELPFUL_LINKS_HTML = `
 
 window.AFTER_USER_TYPE_HTML = `
   <div id="logo"></div>
+  <br>
   <button class="userButtons" onclick="changeHTML('viewMyLots')">View My Lots</button>
+  <br>
   <button class="userButtons" onclick="changeHTML('findClosest')">Find Closest Lot</button>
-
+  <br>
   <div id="goBack">
     <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
@@ -194,7 +194,6 @@ window.FIND_CLOSEST_HTML = `
 
   <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
 
-  //back button
   <div id="goBack">
   <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
@@ -214,9 +213,6 @@ window.AFTER_FINDING_LOT_HTML = `
     </div>
   </div>
 
-  <div id="goBack">
-  <button class="goBack" onclick="goBack()">Go Back</button>
-  </div>
 `;
 
 /* CORDOVA STUFF, DON'T TOUCH */
