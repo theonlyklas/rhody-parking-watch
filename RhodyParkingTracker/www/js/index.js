@@ -1,9 +1,10 @@
 /* GLOBAL VARIABLES HERE */
-window.VIEWS = ["userSelectionMenu"]; 
-window.CURRENT_VIEW = '';
-window.PREVIOUS_VIEW = '';
+window.VIEWS = ["userSelectionMenu"];
+window.CURRENT_VIEW = "userSelectionMenu";
+window.PREVIOUS_VIEW = "";
 window.USER_CLASS;
 window.DESTINATION;
+window.GPS_COORDINATES = findParkingLot();
 
 /* prevent memory leaks by deleting globals when tab closes */
 window.onunload = function() {
@@ -13,6 +14,8 @@ window.onunload = function() {
   delete window.USER_CLASS;
   delete window.DESTINATION;
   delete window.VIEWS;
+  delete window.GPS_COORDINATES;
+
 
   /* WINDOW HTMLS */
   delete window.DEFAULT_CORDOVA_HTML;
@@ -25,7 +28,8 @@ window.onunload = function() {
 }
 
 /* displays the next requested view from the user */
-function changeHTML(desiredView) {  
+function changeHTML(desiredView) {
+  window.PREVIOUS_VIEW = window.CURRENT_VIEW;
   /* rewrites the html inside the appWrapper according to the argument passed in */
   if (desiredView === "TEST") {
     var htmlReplacement = window.DEFAULT_CORDOVA_HTML;
@@ -43,8 +47,12 @@ function changeHTML(desiredView) {
     var htmlReplacement = window.USER_SELECTION_MENU_HTML;
   }
   window.VIEWS.push(desiredView);
-
+  window.CURRENT_VIEW = desiredView;
   document.getElementById("appWrapper").innerHTML = htmlReplacement;
+  // If GPS coordinates are in the next view's html, rewrite them with the saved GPS coordinates
+  if (desiredView === "afterFindingLot") {
+    document.getElementById("GPSLink").href = "http://maps.google.com/?q=" + window.GPS_COORDINATES;
+  }
 }
 
 /* saves user class and displays next view */
@@ -86,12 +94,37 @@ function goBack() {
 	  }
 	  changeHTML(temp);
 	  window.VIEWS.pop();
+    if (window.PREVIOUS_VIEW == "userSelectionMenu") {
+      window.USER_CLASS = "";
+    }
+
+    changeHTML(window.PREVIOUS_VIEW);
+
   }
 }
 
 /* saves the user's desired destination */
 function saveDestination(desiredDestination){
   window.DESTINATION = desiredDestination;
+  window.GPS_COORDINATES = findParkingLot();
+}
+function findParkingLot() {
+  if (window.DESTINATION == 'Balentine'){
+    //fine arts parking lot coordinates
+     return `41°29'17.5"N 71°31'24.3"W`;
+  } else if (window.DESTINATION == 'CBLSHall'){
+      //plains lot coordinates
+      return `41°29'25.4"N 71°32'15.7"W`;
+  } else if (window.DESTINATION == 'Library'){
+    //dairy barn parking lot for residents..
+      return `41°29'21.0"N 71°32'01.9"W`;
+  } else if (window.DESTINATION == 'MemorialUnion'){
+      //keany lot coordinates
+      return `41°29'02.5"N 71°32'08.6"W`;
+  } else if (window.DESTINATION == 'TylerHall') {
+    //plains lot coordinates
+    return `41°29'17.5"N 71°31'24.3"W`;
+  }
 }
 
 /* strings that are used to rewrite the appWrapper element */
@@ -166,7 +199,7 @@ window.VIEW_MY_LOTS_HTML = `
 <div id="goBack">
 	<button class="goBack" onclick="goBack()">Go Back</button>
 </div>
-  
+
 
 <div id="goBack">
 <button class="goBack" onclick="goBack()">Go Back</button>
@@ -185,7 +218,7 @@ window.FIND_CLOSEST_HTML = `
         <th>Destinations</th>
       </tr>
       <tr>
-        <td> <button onclick="saveDestination('balentine')">Balentine Hall</button></td>
+        <td> <button onclick="saveDestination('Balentine')">Balentine Hall</button></td>
       </tr>
       <tr>
         <td> <button onclick="saveDestination('CBLSHall')">CBLS Hall</button></td>
@@ -197,7 +230,7 @@ window.FIND_CLOSEST_HTML = `
         <td> <button onclick="saveDestination('MemorialUnion')">Memorial Union</button></td>
       </tr>
       <tr>
-        <td> <button onclick="saveDestination('TylerHall')">Tyler Hall</button></td>
+        <td> <tr onclick="saveDestination('TylerHall')"></td>
       </tr>
   </table>
   <br>
@@ -217,7 +250,7 @@ window.AFTER_FINDING_LOT_HTML = `
   <div id="title">
     <p>Closest Parking Lot</p>
     <br>
-    <button class="userButtons" onclick="location.href='http://google.com';">Open in Google Maps</button>
+    <a id="GPSLink" href="http://maps.google.com/?q=`+ window.GPS_COORDINATES +`"><button id="GPSButton" class="userButtons">Open in Google Maps</button></a>
     <br>
     <div id="goBack">
     	<button class="goBack" onclick="goBack()">Go Back</button>
