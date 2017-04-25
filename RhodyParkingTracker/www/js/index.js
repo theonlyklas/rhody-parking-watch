@@ -1,7 +1,6 @@
 /* GLOBAL VARIABLES HERE */
-window.VIEWS = ["userSelectionMenu"]; 
-window.CURRENT_VIEW = '';
-window.PREVIOUS_VIEW = '';
+window.VIEWS = ['userSelectionMenu'];
+
 window.USER_CLASS;
 window.DESTINATION;
 
@@ -25,7 +24,9 @@ window.onunload = function() {
 }
 
 /* displays the next requested view from the user */
-function changeHTML(desiredView) {  
+function changeHTML(desiredView) {
+  /* back button update counter array */
+  window.VIEWS.push(desiredView);
   /* rewrites the html inside the appWrapper according to the argument passed in */
   if (desiredView === "TEST") {
     var htmlReplacement = window.DEFAULT_CORDOVA_HTML;
@@ -78,6 +79,7 @@ function testPHP(button) {
 
 /* returns user to the screen they were previously viewing */
 function goBack() {
+  /* save previous window */
   if (window.VIEWS.length >= 1) {
 	  window.VIEWS.pop();
 	  var temp = window.VIEWS[(window.VIEWS.length - 1)];
@@ -143,9 +145,11 @@ window.HELPFUL_LINKS_HTML = `
 
 window.AFTER_USER_TYPE_HTML = `
   <div id="logo"></div>
+  <br>
   <button class="userButtons" onclick="changeHTML('viewMyLots')">View My Lots</button>
+  <br>
   <button class="userButtons" onclick="changeHTML('findClosest')">Find Closest Lot</button>
-
+  <br>
   <div id="goBack">
     <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
@@ -203,7 +207,6 @@ window.FIND_CLOSEST_HTML = `
   <br>
   <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
 
-  //back button
   <div id="goBack">
   <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
@@ -224,9 +227,6 @@ window.AFTER_FINDING_LOT_HTML = `
     </div>
   </div>
 
-  <div id="goBack">
-  <button class="goBack" onclick="goBack()">Go Back</button>
-  </div>
 `;
 
 /* CORDOVA STUFF, DON'T TOUCH */
