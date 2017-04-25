@@ -212,7 +212,37 @@ window.VIEW_MY_LOTS_HTML = `
 //Still working on passing a location into maps from the click
 window.FIND_CLOSEST_HTML = `
   <div id="logo"></div>
+  <br><br>
+<!-- dropdown menu for selecting distinations -->
 
+  <div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Select your URI destination</button>
+    <div id="myDropdown" class="dropdown-content">
+      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+      <a href="#about">
+        <button class="dropdownButton" onclick="saveDestination('balentine')">Balentine Hall</button>
+      </a>
+      <a href="#base">
+        <button class="dropdownButton" onclick="saveDestination('CBLSHall')">
+          Center for Biological and Life Sciences</button>
+      </a>
+      <a href="#blog">
+        <button class="dropdownButton" onclick="saveDestination('Library')">Library</button>
+      </a>
+      <a href="#contact">
+        <button class="dropdownButton" onclick="saveDestination('MemorialUnion')">Memorial Union</button>
+      </a>
+      <a href="#custom">
+        <button class="dropdownButton" onclick="saveDestination('TylerHall')">Tyler Hall</button>
+      </a>
+      <a href="#support">Fine Arts Center</a>
+      <a href="#tools">Hope Commons Dining Hall</a>
+    </div>
+  </div>
+
+
+
+<!--
   <table style="width:75%">
       <tr>
         <th>Destinations</th>
@@ -233,10 +263,11 @@ window.FIND_CLOSEST_HTML = `
         <td> <tr onclick="saveDestination('TylerHall')"></td>
       </tr>
   </table>
+
   <br>
   <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
+   -->
 
-  //back button
   <div id="goBack">
   <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
@@ -256,11 +287,34 @@ window.AFTER_FINDING_LOT_HTML = `
     	<button class="goBack" onclick="goBack()">Go Back</button>
     </div>
   </div>
-
-  <div id="goBack">
-  <button class="goBack" onclick="goBack()">Go Back</button>
-  </div>
 `;
+
+/*Dropdown menu functionality*/
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+
+
+
 
 /* CORDOVA STUFF, DON'T TOUCH */
 
