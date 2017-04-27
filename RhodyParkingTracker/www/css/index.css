@@ -242,8 +242,8 @@ html, body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: relative;
   margin: auto;
-}
 
+}
 
   table, th, td{
         margin: auto;
@@ -256,13 +256,13 @@ html, body {
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-
 #helpfulLinks {
     position: absolute;
     top: 85%;
     height: 10%;
     width: 100%;
 }
+
 img{
   margin: auto;
   max-width: 100%;

@@ -10,7 +10,6 @@ window.onunload = function() {
   delete window.VIEWS;
   delete window.USER_CLASS;
   delete window.DESTINATION;
-  delete window.VIEWS;
   delete window.GPS_COORDINATES;
 
   /* WINDOW HTMLS */
@@ -161,12 +160,12 @@ window.HELPFUL_LINKS_HTML = `
 
 window.AFTER_USER_TYPE_HTML = `
   <div id="logo"></div>
+  <br>
   <button class="userButtons" onclick="changeHTML('viewMyLots')">View My Lots</button>
+  <br>
   <button class="userButtons" onclick="changeHTML('findClosest')">Find Closest Lot</button>
-
-  <div id="goBack">
-    <button class="goBack" onclick="goBack()">Go Back</button>
-  </div>
+  <br>
+  <button class="goBack" onclick="goBack()">Go Back</button>
 `;
 
 //view to get list of lots
@@ -180,6 +179,8 @@ window.VIEW_MY_LOTS_HTML = `
 <img src="/js/Parking-Lot.jpg">
 <div id = "lot_info">
 <p> Lot Title     # Spots:  </p>
+<br>
+<br>
 <br>
 <div id="goBack">
 	<button class="goBack" onclick="goBack()">Go Back</button>
