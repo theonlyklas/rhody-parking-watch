@@ -82,7 +82,7 @@ function testPHP(button) {
 /* returns user to the screen they were previously viewing */
 function goBack() {
   var temp = window.VIEWS[(window.VIEWS.length - 2)];
-  window.VIEWS.pop(); 
+  window.VIEWS.pop();
   changeHTML(temp);
   window.VIEWS.pop();
 }
@@ -93,22 +93,84 @@ function saveDestination(desiredDestination){
   window.GPS_COORDINATES = findParkingLot();
 }
 function findParkingLot() {
-  if (window.DESTINATION == 'Balentine'){
-    //fine arts parking lot coordinates
-     return `41°29'17.5"N 71°31'24.3"W`;
-  } else if (window.DESTINATION == 'CBLSHall'){
+  //if visitor
+  if (window.USER_CLASS == 'visitor'){
+    if (window.DESTINATION == 'Balentine'){
+      //fine arts parking lot coordinates
+       return `41°29'17.5"N 71°31'24.3"W`;
+    } else if (window.DESTINATION == 'CBLSHall'){
+        //plains lot coordinates
+        return `41°29'25.4"N 71°32'15.7"W`;
+    } else if (window.DESTINATION == 'Library'){
+      //dairy barn parking lot for residents..
+        return `41°29'21.0"N 71°32'01.9"W`;
+    } else if (window.DESTINATION == 'MemorialUnion'){
+        //keany lot coordinates
+        return `41°29'02.5"N 71°32'08.6"W`;
+    } else if (window.DESTINATION == 'TylerHall') {
       //plains lot coordinates
-      return `41°29'25.4"N 71°32'15.7"W`;
-  } else if (window.DESTINATION == 'Library'){
-    //dairy barn parking lot for residents..
-      return `41°29'21.0"N 71°32'01.9"W`;
-  } else if (window.DESTINATION == 'MemorialUnion'){
-      //keany lot coordinates
-      return `41°29'02.5"N 71°32'08.6"W`;
-  } else if (window.DESTINATION == 'TylerHall') {
-    //plains lot coordinates
-    return `41°29'17.5"N 71°31'24.3"W`;
+      return `41°29'17.5"N 71°31'24.3"W`;
+    }
   }
+  //if faculty
+  if (window.USER_CLASS == 'faculty'){
+    if (window.DESTINATION == 'Balentine'){
+      //faculty parking next to library
+        return `41°29'16.4"N 71°31'46.2"W`;
+    } else if (window.DESTINATION == 'CBLSHall'){
+        //lot next to chaffee
+        return `41°29'21.3"N 71°31'47.5"W`;
+    } else if (window.DESTINATION == 'Library'){
+      //faculty parking next to library
+        return `41°29'16.4"N 71°31'46.2"W`;
+    } else if (window.DESTINATION == 'MemorialUnion'){
+        //lot next to union
+        return `41°29'11.4"N 71°31'48.5"W`;
+    } else if (window.DESTINATION == 'TylerHall') {
+      //lot next to tyler
+      return `41°29'20.4"N 71°31'37.4"W`;
+    }
+  }
+  //if commuter
+  if (window.USER_CLASS == 'commuter'){
+    if (window.DESTINATION == 'Balentine'){
+      //fine arts parking lot coordinates
+       return `41°29'17.5"N 71°31'24.3"W`;
+    } else if (window.DESTINATION == 'CBLSHall'){
+        //plains lot coordinates
+        return `41°29'25.4"N 71°32'15.7"W`;
+    } else if (window.DESTINATION == 'Library'){
+      //plains lot coordinates
+      return `41°29'17.5"N 71°31'24.3"W`;
+    } else if (window.DESTINATION == 'MemorialUnion'){
+        //keany lot coordinates
+        return `41°29'02.5"N 71°32'08.6"W`;
+    } else if (window.DESTINATION == 'TylerHall') {
+      //plains lot coordinates
+      return `41°29'17.5"N 71°31'24.3"W`;
+    }
+  }
+  //if resident
+  if (window.USER_CLASS == 'resident'){
+    if (window.DESTINATION == 'Balentine'){
+      //dairy barn parking lot for residents..
+        return `41°29'21.0"N 71°32'01.9"W`;
+    } else if (window.DESTINATION == 'CBLSHall'){
+      //dairy barn parking lot for residents..
+        return `41°29'21.0"N 71°32'01.9"W`;
+    } else if (window.DESTINATION == 'Library'){
+      //dairy barn parking lot for residents..
+        return `41°29'21.0"N 71°32'01.9"W`;
+    } else if (window.DESTINATION == 'MemorialUnion'){
+      //dairy barn parking lot for residents..
+        return `41°29'21.0"N 71°32'01.9"W`;
+    } else if (window.DESTINATION == 'TylerHall') {
+      //dairy barn parking lot for residents..
+        return `41°29'21.0"N 71°32'01.9"W`;
+    }
+  }
+
+
 }
 
 /* strings that are used to rewrite the appWrapper element */
@@ -246,12 +308,14 @@ window.FIND_CLOSEST_HTML = `
   </table>
 
   <br>
-  <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
+
    -->
 
   <br>
+  <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
   <div id="goBack">
   <button class="goBack" onclick="goBack()">Go Back</button>
+
   </div>
 
 `;
