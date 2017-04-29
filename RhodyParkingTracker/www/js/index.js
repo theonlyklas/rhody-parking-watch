@@ -176,47 +176,46 @@ function findParkingLot() {
 /* strings that are used to rewrite the appWrapper element */
 window.USER_SELECTION_MENU_HTML = `
   <div id="logo"></div>
-  <div id="title">
-      <p>I am a...</p>
-  </div>
-  <div id="userSelect">
-    <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
-    <br>
-    <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
-    <br>
-    <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
-    <br>
-    <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
-    <br>
-  </div>
+        <div id="title">
+            <p>I am a...</p>
+        </div>
+        <div id="userSelect">
+          <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
+          <div class="Generic-buttonSpacing"> </div>
+          <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
+          <div class="Generic-buttonSpacing"> </div>
+          <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
+          <div class="Generic-buttonSpacing"> </div>
+          <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
+        </div>
 
-  <div id="helpfulLinks">
-      <button class="linkButton" onclick="changeHTML('helpfulLinks')">URI Parking Links</button>
-  </div>
+        <div id="helpfulLinks">
+            <button class="linkButton" onclick="changeHTML('helpfulLinks')">URI Parking Links</button>
+        </div>
 `;
 
 window.HELPFUL_LINKS_HTML = `
   <div id="logo"></div>
-  <div id="title">
-  	<p>Helpful Links</p>
-    <div id="links">
+	<br>
+      <div id="links">
     	<a href="http://web.uri.edu/parking/"><button class="links">Parking Services</button></a>
-        <br>
-    	<a href="http://bus.apps.uri.edu"><button class="links">URI Bus Tracker</button></a>
-        <br>
-    	<a href="https://www.buymypermit.com/uri/"><button class="links">Purchase URI Permit</button></a>
-        <br>
-    	<a href="https://www.uri.edu"><button class="links">URI Homepage</button></a>
-        <br>
-    	<a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Github</button></a>
-        <br>
-      <button class="links" onclick="testPHP('testPHP')">Test PHP</button>
-        <br>
+    	<div class="Generic-buttonSpacing"> </div>
+		<a href="http://bus.apps.uri.edu"><button class="links">URI Bus Tracker</button></a>
+    	<div class="Generic-buttonSpacing"> </div>
+		<a href="https://www.buymypermit.com/uri/"><button class="links">Purchase URI Permit</button></a>
+    	<div class="Generic-buttonSpacing"> </div>
+		<a href="https://www.uri.edu"><button class="links">URI Homepage</button></a>
+    	<div class="Generic-buttonSpacing"> </div>
+		<a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Github</button></a>
+        <div class="Generic-buttonSpacing"> </div>
+		<button class="links" onclick="testPHP('testPHP')">Test PHP</button>
     </div>
-  </div>
 
   <div id="goBack">
-  <button class="goBack" onclick="goBack()">Go Back</button>
+    <div class="Generic-buttonSpacing"> </div>
+	<div class="Generic-buttonSpacing"> </div>
+	<div class="Generic-buttonSpacing"> </div>
+	<button class="goBack" onclick="goBack()">Go Back</button>
   </div>
 `;
 
@@ -240,7 +239,7 @@ window.VIEW_MY_LOTS_HTML = `
 
 <img src="/js/Parking-Lot.jpg">
 <div id = "lot_info">
-<p> Lot Title     # Spots:  </p>
+
 <br>
 <br>
 <br>
@@ -256,7 +255,7 @@ window.VIEW_MY_LOTS_HTML = `
 window.FIND_CLOSEST_HTML = `
   <div id="logo"></div>
   <br><br>
-<!-- dropdown menu for selecting distinations -->
+  <!-- dropdown menu for selecting distinations -->
 
   <div class="dropdown">
   <button onclick="myFunction()" class="dropbtn">Select your URI destination</button>
@@ -283,8 +282,6 @@ window.FIND_CLOSEST_HTML = `
     </div>
   </div>
 
-
-
 <!--
   <table style="width:75%">
       <tr>
@@ -310,16 +307,14 @@ window.FIND_CLOSEST_HTML = `
   <br>
 
    -->
-
-  <br>
-  <button class="userButtons" onclick="changeHTML('afterFindingLot')">GO</button>
+  <br><br><br>
+  <button class="userButtons" onclick="changeHTML('afterFindingLot')">Go</button>
   <div id="goBack">
-  <button class="goBack" onclick="goBack()">Go Back</button>
-
+    <br><br>
+	<button class="goBack" onclick="goBack()">Go Back</button>
   </div>
 
 `;
-
 
 window.AFTER_FINDING_LOT_HTML = `
   <div id="logo"></div>

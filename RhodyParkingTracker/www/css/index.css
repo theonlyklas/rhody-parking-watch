@@ -242,9 +242,9 @@ html, body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: relative;
   margin: auto;
-
+  
 }
-
+/* Not being used:
   table, th, td{
         margin: auto;
         border: 3px solid black;
@@ -255,6 +255,7 @@ html, body {
         background-color: aliceblue;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+*/
 
 #helpfulLinks {
     position: absolute;
@@ -306,6 +307,7 @@ img{
 .dropdown {
     position: relative;
     display: inline-block;
+	margin: auto;
 }
 
 .dropdown-content {
@@ -348,3 +350,11 @@ img{
 .show {display:block;}
 
 /*End dropdown buttons for selecting destinations*/
+
+/* Custom spacing */
+.Generic-buttonSpacing{
+    height: 10px;
+}
+.afterUserSelection-buttonSpacing{
+	height: 100px;
+}
