@@ -81,9 +81,13 @@ function testPHP(button) {
 
 /* returns user to the screen they were previously viewing */
 function goBack() {
+  /* save the window to go back to */
   var temp = window.VIEWS[(window.VIEWS.length - 2)];
+  /* remove current view from array */
   window.VIEWS.pop();
+  /* update view */
   changeHTML(temp);
+  /* remove current view from array */
   window.VIEWS.pop();
 }
 
@@ -180,7 +184,8 @@ window.USER_SELECTION_MENU_HTML = `
             <p>I am a...</p>
         </div>
         <div id="userSelect">
-          <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
+		  <!-- Buttons for user types -->
+		  <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
           <div class="Generic-buttonSpacing"> </div>
           <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
           <div class="Generic-buttonSpacing"> </div>
@@ -188,7 +193,7 @@ window.USER_SELECTION_MENU_HTML = `
           <div class="Generic-buttonSpacing"> </div>
           <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
         </div>
-
+		<!-- button for helpful links -->
         <div id="helpfulLinks">
             <button class="linkButton" onclick="changeHTML('helpfulLinks')">URI Parking Links</button>
         </div>
@@ -198,6 +203,7 @@ window.HELPFUL_LINKS_HTML = `
   <div id="logo"></div>
 	<br>
       <div id="links">
+	    <!-- All helpful link buttons/links -->
     	<a href="http://web.uri.edu/parking/"><button class="links">Parking Services</button></a>
     	<div class="Generic-buttonSpacing"> </div>
 		<a href="http://bus.apps.uri.edu"><button class="links">URI Bus Tracker</button></a>
@@ -210,7 +216,7 @@ window.HELPFUL_LINKS_HTML = `
         <div class="Generic-buttonSpacing"> </div>
 		<button class="links" onclick="testPHP('testPHP')">Test PHP</button>
     </div>
-
+  <!-- Go back button w/ spacing -->
   <div id="goBack">
     <div class="Generic-buttonSpacing"> </div>
 	<div class="Generic-buttonSpacing"> </div>
@@ -238,7 +244,6 @@ window.VIEW_MY_LOTS_HTML = `
   </div>
 
 <img src="/js/Parking-Lot.jpg">
-<div id = "lot_info">
 
 <br>
 <br>
@@ -283,6 +288,7 @@ window.FIND_CLOSEST_HTML = `
   </div>
 
 <!--
+*** TABLE STYLING - NOT IN USE ***
   <table style="width:75%">
       <tr>
         <th>Destinations</th>
@@ -307,6 +313,7 @@ window.FIND_CLOSEST_HTML = `
   <br>
 
    -->
+   
   <br><br><br>
   <button class="userButtons" onclick="changeHTML('afterFindingLot')">Go</button>
   <div id="goBack">
