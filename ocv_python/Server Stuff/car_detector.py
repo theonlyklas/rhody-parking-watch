@@ -31,7 +31,7 @@ class ParkingLot:
             self.cornerDetectionRatioThreshold = 0.04
         elif requestedLot == "camera44":
             self.parkingSpotCount = 6
-            self.cornerDetectionRatioThreshold = 0.02
+            self.cornerDetectionRatioThreshold = 0.015
         elif requestedLot == "camera50":
             self.parkingSpotCount = 5
             self.cornerDetectionRatioThreshold = 0.03

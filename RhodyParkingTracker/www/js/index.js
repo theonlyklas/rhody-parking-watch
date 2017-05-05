@@ -183,50 +183,52 @@ function findParkingLot() {
   }
 }
 
-/* strings that are used to rewrite the appWrapper element */
+/* BEGIN strings that are used to rewrite the appWrapper element */
 window.USER_SELECTION_MENU_HTML = `
   <div id="logo"></div>
-        <div id="title">
-            <p>I am a...</p>
-        </div>
-        <div id="userSelect">
-		  <!-- Buttons for user types -->
-		  <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
-          <div class="Generic-buttonSpacing"> </div>
-          <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
-          <div class="Generic-buttonSpacing"> </div>
-          <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
-          <div class="Generic-buttonSpacing"> </div>
-          <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
-        </div>
-		<!-- button for helpful links -->
-        <div id="helpfulLinks">
-            <button class="linkButton" onclick="changeHTML('helpfulLinks')">URI Parking Links</button>
-        </div>
+  <div id="title">
+      <p>I am a...</p>
+  </div>
+  <div id="userSelect">
+    <!-- Buttons for user types -->
+    <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
+    <div class="Generic-buttonSpacing"> </div>
+    <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
+    <div class="Generic-buttonSpacing"> </div>
+    <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
+    <div class="Generic-buttonSpacing"> </div>
+    <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
+  </div>
+
+  <!-- button for helpful links -->
+  <div id="helpfulLinks">
+      <button class="linkButton" onclick="changeHTML('helpfulLinks')">URI Parking Links</button>
+  </div>
 `;
 
 window.HELPFUL_LINKS_HTML = `
   <div id="logo"></div>
 	<br>
-      <div id="links">
-	    <!-- All helpful link buttons/links -->
-    	<a href="http://web.uri.edu/parking/"><button class="links">Parking Services</button></a>
-    	<div class="Generic-buttonSpacing"> </div>
-		<a href="http://bus.apps.uri.edu"><button class="links">URI Bus Tracker</button></a>
-    	<div class="Generic-buttonSpacing"> </div>
-		<a href="https://www.buymypermit.com/uri/"><button class="links">Purchase URI Permit</button></a>
-    	<div class="Generic-buttonSpacing"> </div>
-		<a href="https://www.uri.edu"><button class="links">URI Homepage</button></a>
-    	<div class="Generic-buttonSpacing"> </div>
-		<a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Github</button></a>
-        <div class="Generic-buttonSpacing"> </div>
-    </div>
+  <div id="links">
+    <!-- All helpful link buttons/links -->
+    <a href="http://web.uri.edu/parking/"><button class="links">Parking Services</button></a>
+    <div class="Generic-buttonSpacing"> </div>
+    <a href="http://bus.apps.uri.edu"><button class="links">URI Bus Tracker</button></a>
+    <div class="Generic-buttonSpacing"> </div>
+    <a href="https://www.buymypermit.com/uri/"><button class="links">Purchase URI Permit</button></a>
+    <div class="Generic-buttonSpacing"> </div>
+    <a href="https://www.uri.edu"><button class="links">URI Homepage</button></a>
+    <div class="Generic-buttonSpacing"> </div>
+    <a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Our Team's Github Repository</button></a>
+    <div class="Generic-buttonSpacing"> </div>
+  </div>
+
   <!-- Go back button w/ spacing -->
   <div id="goBack">
     <div class="Generic-buttonSpacing"> </div>
-	<div class="Generic-buttonSpacing"> </div>
-	<div class="Generic-buttonSpacing"> </div>
-	<button class="goBack" onclick="goBack()">Go Back</button>
+  	<div class="Generic-buttonSpacing"> </div>
+  	<div class="Generic-buttonSpacing"> </div>
+	  <button class="goBack" onclick="goBack()">Go Back</button>
   </div>
 `;
 
@@ -247,8 +249,8 @@ window.VIEW_MY_LOTS_HTML = `
   <div id="title">
     <p>My Available Lots</p>
     <div id="lotsView">
-          <p id="statusMessage">Please wait, retrieving views of your lots</p>
-          <!-- filled by JavaScript -->
+      <p id="statusMessage">Please wait, retrieving views of your lots</p>
+      <!-- filled by JavaScript -->
     </div>
   </div>
   <br>
@@ -264,18 +266,18 @@ window.FIND_CLOSEST_HTML = `
   <div id="logo"></div>
   <br>
   <br>
-<!-- dropdown menu for selecting distinations -->
 
+  <!-- dropdown menu for selecting destinations -->
   <div class="dropdown">
   <button onclick="myFunction()" class="dropbtn">Select your URI destination</button>
     <div id="myDropdown" class="dropdown-content">
       <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
       <a href="#about">
-        <button class="dropdownButton" onclick="saveDestination('balentine')">Balentine Hall</button>
+        <button class="dropdownButton" onclick="saveDestination('BallentineHall')">Ballentine Hall</button>
       </a>
       <a href="#base">
-        <button class="dropdownButton" onclick="saveDestination('CBLSHall')">
-          Center for Biological and Life Sciences</button>
+        <button class="dropdownButton" onclick="saveDestination('CBLSHall')">Center for Biological
+        <br> and Life Sciences</button>
       </a>
       <a href="#blog">
         <button class="dropdownButton" onclick="saveDestination('Library')">Library</button>
@@ -284,52 +286,21 @@ window.FIND_CLOSEST_HTML = `
         <button class="dropdownButton" onclick="saveDestination('MemorialUnion')">Memorial Union</button>
       </a>
       <a href="#custom">
-        <button class="dropdownButton" onclick="saveDestination('TylerHall')">Tyler Hall</button>
+        <button class="dropdownButton" onclick="saveDestination('MackalGym')">Mackal Gym</button>
       </a>
-      <a href="#support">Fine Arts Center</a>
-      <a href="#tools">Hope Commons Dining Hall</a>
+      <a href="#support">
+        <button class="dropdownButton" onclick="saveDestination('FascitelliGym')">Fascitelli Gym</button>
+      </a>
     </div>
   </div>
-
-<!--
-*** TABLE STYLING - NOT IN USE ***
-  <table style="width:75%">
-      <tr>
-        <th>Destinations</th>
-      </tr>
-      <tr>
-        <td> <button onclick="saveDestination('BallentineHall')">Ballentine Hall</button></td>
-      </tr>
-      <tr>
-        <td> <button onclick="saveDestination('CBLSHall')">CBLS Hall</button></td>
-      </tr>
-      <tr>
-        <td> <button onclick="saveDestination('Library')">Library</button></td>
-      </tr>
-      <tr>
-        <td> <button onclick="saveDestination('MemorialUnion')">Memorial Union</button></td>
-      </tr>
-      <tr>
-        <td> <button onclick="saveDestination('TylerHall')">Tyler Hall</button></td>
-      </tr>
-      <tr>
-        <td> <button onclick="saveDestination('MackalGym')">Mackal-Tootell Gym</button></td>
-      </tr>
-      <tr>
-        <td> <button onclick="saveDestination('FascitelliGym')">Fascitelli Gym</button></td>
-      </tr>
-  </table>
-
   <br>
-
-   -->
-   
-  <br><br><br>
+  <br>
+  <br>
   <button class="userButtons" onclick="changeHTML('afterFindingLot')">Go</button>
   <div id="goBack">
-  <br>
-  <br>
-	<button class="goBack" onclick="goBack()">Go Back</button>
+    <br>
+    <br>
+  	<button class="goBack" onclick="goBack()">Go Back</button>
   </div>
 
 `;
@@ -343,9 +314,7 @@ window.AFTER_FINDING_LOT_HTML = `
       <p id="statusMessage">Please wait, retrieving view of the lot</p>
     </div>
     <br>
-    <a id="GPSLink" href="http://maps.google.com/?q=` + window.GPS_COORDINATES + `"><button id="GPSButton" class="userButtons">Open in Google Maps</button></a>
-    <br>
-    <div id="goBack">a
+    <div id="goBack">
     	<button class="goBack" onclick="goBack()">Go Back</button>
     </div>
   </div>
