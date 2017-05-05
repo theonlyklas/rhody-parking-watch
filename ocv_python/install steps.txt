@@ -7,14 +7,13 @@ http://docs.opencv.org/3.2.0/ Use this for tutorials
 3. From an admin command line/terminal, run these commands anywhere (only needs to be done once):
 pip install opencv-python
 pip install matplotlib
+pip install numpy
 
 4. Run the test_ORB.py file
 
-(COMPLETELY OPTIONAL AND I HAVEN'T TRIED THIS YET) To test out SIFT and SURF algorithms: 
+(COMPLETELY OPTIONAL AND I HAVEN'T TRIED THIS YET) To test out SIFT and SURF algorithms:
 git clone both the opencv AND opencv_contrib repositories
 follow cmake instructions
 compile the library
 
 ^it's a patented image recognition algorithm so I'm avoiding it tbh
-
-
