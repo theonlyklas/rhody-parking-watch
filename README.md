@@ -36,7 +36,8 @@ http://docs.opencv.org/3.2.0/ Use this for tutorials
 
 3. From an admin command line/terminal, run these commands anywhere (only needs to be done once):
 `pip install opencv-python
-pip install matplotlib`
+pip install matplotlib
+pip install numpy`
 
 4. Run the test_ORB.py file
 

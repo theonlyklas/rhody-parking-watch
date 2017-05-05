@@ -25,10 +25,10 @@ class ParkingLot:
             self.cornerDetectionRatioThreshold = 0.07
         elif requestedLot == "camera24":
             self.parkingSpotCount = 7
-            self.cornerDetectionRatioThreshold = 0.04
+            self.cornerDetectionRatioThreshold = 0.01
         elif requestedLot == "camera32":
-            self.parkingSpotCount = 6
-            self.cornerDetectionRatioThreshold = 0.05
+            self.parkingSpotCount = 7
+            self.cornerDetectionRatioThreshold = 0.04
         elif requestedLot == "camera44":
             self.parkingSpotCount = 6
             self.cornerDetectionRatioThreshold = 0.02
@@ -42,6 +42,9 @@ class ParkingLot:
             self.parkingSpotCount = 7
             self.cornerDetectionRatioThreshold = 0.07
 
+        self.takenSpots = 0;
+        self.openSpots = 0;
+
         # create parking spots
         self.parkingSpots = []
         for i in range(self.parkingSpotCount):
@@ -50,22 +53,31 @@ class ParkingLot:
     # needs to retrieve from video files on server
     def retrieveViewOfParkingLot(self, requestedLot, requestedFrame):
         # open the requestedLot's video file
-        video = cv2.VideoCapture("./camera-footage/" + requestedLot + ".avi")
+        print(requestedLot)
+        video = cv2.VideoCapture("camera-footage/" + requestedLot + ".avi")
 
         # choose a random frame if 0 is provided
-        if requestedFrame == 0:
+        if int(requestedFrame) == 0:
             frameCount = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
-            requestedFrame = random.randrange(frameCount)
+            chosenFrame = random.randrange(frameCount)
+        else:
+            chosenFrame = requestedFrame
+
+        print(chosenFrame)
 
         # retrieve the requestedFrame
-        video.set(1, float(requestedFrame))
+        video.set(1, float(chosenFrame))
         success, frame = video.read()
+
+        print(success)
 
         return frame
 
     def checkParkingSpots(self):
         # the big algorithm begins
         maskedImages = []
+        self.takenSpotCount = 0;
+        self.openSpotCount = 0;
 
         for i in range(len(self.parkingSpots)):
             # mask defaulting to black for 3-channel and transparent for 4-channel
@@ -122,8 +134,10 @@ class ParkingLot:
             # set the status of the parking spot to 1 if occupied or 0 if not
             if redPixelRatio < self.cornerDetectionRatioThreshold:
                 self.parkingSpots[i].parkingSpotState = "open";
+                self.openSpotCount += 1
             else:
                 self.parkingSpots[i].parkingSpotState = "taken";
+                self.takenSpotCount += 1
 
             # display the result
             # cv2.imshow('c44_' + str(i), maskedImages[i])
@@ -292,6 +306,8 @@ class ParkingSpot:
 def main(requestedLot, requestedFrame):
     parkingLot = ParkingLot(requestedLot, requestedFrame)
     parkingLot.checkParkingSpots()
+
+    print("Total Parking Spots: " + str(parkingLot.parkingSpotCount) + ", Taken Parking Spots: " + str(parkingLot.takenSpotCount) + ", Open Parking Spots: " + str(parkingLot.openSpotCount))
 
     return 0
 
