@@ -175,7 +175,6 @@ img {
   height: auto;
   border-radius: 4px;
   padding: 5px;
-  width: 300px;
 }
 
 #appWrapper {
@@ -194,7 +193,7 @@ img {
     bottom: 3%;
 }
 
-/* User selection div */ 
+/* User selection div */
 #userSelect {
     position: relative;
     bottom: 6%;
@@ -257,7 +256,7 @@ img {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: relative;
   margin: auto;
-  
+
 }
 /* Not being use (table formating)
   table, th, td{

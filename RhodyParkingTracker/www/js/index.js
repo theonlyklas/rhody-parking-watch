@@ -63,7 +63,7 @@ function defineUser(desiredView, user) {
 function detectParkingSpots(requestedLot) {
   /* create xhttprequest object and initialize variables */
   var xhttp = new XMLHttpRequest();
-  var url = "https:/jasonklas.me/rhodyparkingtracker/test.php";
+  var url = "https://jasonklas.me/rhodyparkingtracker/test.php";
 
   /* if a requestedLot is passed to the function */
   if (requestedLot === "BallentineHall") {
@@ -272,23 +272,23 @@ window.FIND_CLOSEST_HTML = `
   <button onclick="myFunction()" class="dropbtn">Select your URI destination</button>
     <div id="myDropdown" class="dropdown-content">
       <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-      <a href="#about">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('BallentineHall')">Ballentine Hall</button>
       </a>
-      <a href="#base">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('CBLSHall')">Center for Biological
         <br> and Life Sciences</button>
       </a>
-      <a href="#blog">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('Library')">Library</button>
       </a>
-      <a href="#contact">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('MemorialUnion')">Memorial Union</button>
       </a>
-      <a href="#custom">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('MackalGym')">Mackal Gym</button>
       </a>
-      <a href="#support">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('FascitelliGym')">Fascitelli Gym</button>
       </a>
     </div>

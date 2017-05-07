@@ -164,6 +164,7 @@ class ParkingLot:
         # create an alpha-blended image
         self.viewOfLot = cv2.addWeighted(self.viewOfLot, alpha, parkingLotView, beta, gamma)
 
+        # display and save the final image
         # cv2.imshow("final view_" + str(i), self.viewOfLot)
         cv2.imwrite(self.lotName + ".png", self.viewOfLot)
 
