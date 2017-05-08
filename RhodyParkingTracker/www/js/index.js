@@ -185,23 +185,21 @@ function findParkingLot() {
 
 /* BEGIN strings that are used to rewrite the appWrapper element */
 window.USER_SELECTION_MENU_HTML = `
-<div id="appWrapper">
-    <div id="logo"></div>
-    <div id="title">
-        <p>I am a...</p>
-    </div>
-    <div id="userSelect">
-      <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
-      <div class="Generic-buttonSpacing"> </div>
-      <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
-      <div class="Generic-buttonSpacing"> </div>
-      <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
-      <div class="Generic-buttonSpacing"> </div>
-      <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
-      <br>
-      <button class="linkButton" onclick="changeHTML('helpfulLinks')">URI Parking Links</button>
-    </div>
-</div>
+  <div id="logo"></div>
+  <div id="title">
+      <p>I am a...</p>
+  </div>
+  <div id="userSelect">
+    <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
+    <div class="Generic-buttonSpacing"> </div>
+    <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
+    <div class="Generic-buttonSpacing"> </div>
+    <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
+    <div class="Generic-buttonSpacing"> </div>
+    <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
+    <br>
+    <button class="linkButton" onclick="changeHTML('helpfulLinks')">URI Parking Links</button>
+  </div>
 `;
 
 window.HELPFUL_LINKS_HTML = `
