@@ -185,25 +185,23 @@ function findParkingLot() {
 
 /* BEGIN strings that are used to rewrite the appWrapper element */
 window.USER_SELECTION_MENU_HTML = `
-  <div id="logo"></div>
-  <div id="title">
-      <p>I am a...</p>
-  </div>
-  <div id="userSelect">
-    <!-- Buttons for user types -->
-    <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
-    <div class="Generic-buttonSpacing"> </div>
-    <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
-    <div class="Generic-buttonSpacing"> </div>
-    <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
-    <div class="Generic-buttonSpacing"> </div>
-    <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
-  </div>
-
-  <!-- button for helpful links -->
-  <div id="helpfulLinks">
+<div id="appWrapper">
+    <div id="logo"></div>
+    <div id="title">
+        <p>I am a...</p>
+    </div>
+    <div id="userSelect">
+      <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
+      <div class="Generic-buttonSpacing"> </div>
+      <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
+      <div class="Generic-buttonSpacing"> </div>
+      <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
+      <div class="Generic-buttonSpacing"> </div>
+      <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
+      <br>
       <button class="linkButton" onclick="changeHTML('helpfulLinks')">URI Parking Links</button>
-  </div>
+    </div>
+</div>
 `;
 
 window.HELPFUL_LINKS_HTML = `
@@ -221,6 +219,7 @@ window.HELPFUL_LINKS_HTML = `
     <div class="Generic-buttonSpacing"> </div>
     <a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Our Team's Github Repository</button></a>
     <div class="Generic-buttonSpacing"> </div>
+    <a href="https://jasonklas.me/rhodyparkingtracker/RhodyParkingTracker.apk"><button class="links">Download Android APK</button></a>
   </div>
 
   <!-- Go back button w/ spacing -->

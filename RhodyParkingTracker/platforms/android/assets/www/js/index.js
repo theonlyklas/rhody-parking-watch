@@ -63,7 +63,7 @@ function defineUser(desiredView, user) {
 function detectParkingSpots(requestedLot) {
   /* create xhttprequest object and initialize variables */
   var xhttp = new XMLHttpRequest();
-  var url = "https:/jasonklas.me/rhodyparkingtracker/test.php";
+  var url = "https://jasonklas.me/rhodyparkingtracker/test.php";
 
   /* if a requestedLot is passed to the function */
   if (requestedLot === "BallentineHall") {
@@ -185,25 +185,23 @@ function findParkingLot() {
 
 /* BEGIN strings that are used to rewrite the appWrapper element */
 window.USER_SELECTION_MENU_HTML = `
-  <div id="logo"></div>
-  <div id="title">
-      <p>I am a...</p>
-  </div>
-  <div id="userSelect">
-    <!-- Buttons for user types -->
-    <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
-    <div class="Generic-buttonSpacing"> </div>
-    <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
-    <div class="Generic-buttonSpacing"> </div>
-    <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
-    <div class="Generic-buttonSpacing"> </div>
-    <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
-  </div>
-
-  <!-- button for helpful links -->
-  <div id="helpfulLinks">
+<div id="appWrapper">
+    <div id="logo"></div>
+    <div id="title">
+        <p>I am a...</p>
+    </div>
+    <div id="userSelect">
+      <button class="userButtons" onclick="defineUser('afterUserType', 'visitor')">Visitor</button>
+      <div class="Generic-buttonSpacing"> </div>
+      <button class="userButtons" onclick="defineUser('afterUserType', 'commuter')">Commuter</button>
+      <div class="Generic-buttonSpacing"> </div>
+      <button class="userButtons" onclick="defineUser('afterUserType', 'resident')">Resident</button>
+      <div class="Generic-buttonSpacing"> </div>
+      <button class="userButtons" onclick="defineUser('afterUserType', 'faculty')">Faculty Member</button>
+      <br>
       <button class="linkButton" onclick="changeHTML('helpfulLinks')">URI Parking Links</button>
-  </div>
+    </div>
+</div>
 `;
 
 window.HELPFUL_LINKS_HTML = `
@@ -221,6 +219,7 @@ window.HELPFUL_LINKS_HTML = `
     <div class="Generic-buttonSpacing"> </div>
     <a href="https://github.com/theonlyklas/rhody-parking-watch"><button class="links">Our Team's Github Repository</button></a>
     <div class="Generic-buttonSpacing"> </div>
+    <a href="https://jasonklas.me/rhodyparkingtracker/RhodyParkingTracker.apk"><button class="links">Download Android APK</button></a>
   </div>
 
   <!-- Go back button w/ spacing -->
@@ -272,23 +271,23 @@ window.FIND_CLOSEST_HTML = `
   <button onclick="myFunction()" class="dropbtn">Select your URI destination</button>
     <div id="myDropdown" class="dropdown-content">
       <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-      <a href="#about">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('BallentineHall')">Ballentine Hall</button>
       </a>
-      <a href="#base">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('CBLSHall')">Center for Biological
         <br> and Life Sciences</button>
       </a>
-      <a href="#blog">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('Library')">Library</button>
       </a>
-      <a href="#contact">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('MemorialUnion')">Memorial Union</button>
       </a>
-      <a href="#custom">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('MackalGym')">Mackal Gym</button>
       </a>
-      <a href="#support">
+      <a>
         <button class="dropdownButton" onclick="saveDestination('FascitelliGym')">Fascitelli Gym</button>
       </a>
     </div>

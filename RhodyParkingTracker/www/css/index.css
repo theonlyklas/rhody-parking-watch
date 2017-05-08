@@ -271,14 +271,6 @@ img {
 }
 */
 
-/* helpful links div for centering */
-#helpfulLinks {
-    position: absolute;
-    top: 85%;
-    height: 10%;
-    width: 100%;
-}
-
 /* dropdown Menu for URI destinations */
 .dropbtn {
     background-color: deepskyblue;
